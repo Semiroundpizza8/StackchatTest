@@ -24,6 +24,7 @@ const App = () => {
 
     // Whenever a message is sent to our socket, load it into the app
     socket.on("getMessage", (data) => {
+      console.log("Getting Message");
       setMessages((messages) => [...messages, data]);
     });
   }, [socket]);

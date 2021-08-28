@@ -18,6 +18,11 @@ io.on("connection", (socket) => {
   console.log("a user connected: ", socket.id);
 
   socket.on("sendMessage", ({ author, content }) => {
+    console.log("==================");
+    console.log("==================");
+    console.log("Got Message: ", content);
+    console.log("==================");
+    console.log("==================");
     io.emit("getMessage", {
       author,
       content,

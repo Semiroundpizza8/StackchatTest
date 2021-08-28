@@ -6,6 +6,7 @@ const NewMessageForm = ({ name, socket }) => {
 
   const handleFormSubmit = (event, formMessage) => {
     event.preventDefault();
+    console.log("Sending message", socket);
     if (socket)
       socket.emit("sendMessage", { author: name, content: formMessage });
     setFormMessage("");
