@@ -16,6 +16,10 @@ const App = () => {
     const newSocket = io(`https://${window.location.hostname}:${PORT}`, {
       rejectUnauthorized: false,
     });
+    newSocket.on("connect_error", (err) => {
+      console.log(err);
+      console.log(`connect_error due to ${err.message}`);
+    });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
