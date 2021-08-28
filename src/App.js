@@ -13,7 +13,7 @@ const App = () => {
   // Connect to the server
   useEffect(() => {
     const PORT = process.env.PORT || 3000;
-    const newSocket = io(`http://${window.location.hostname}:${PORT}`);
+    const newSocket = io(`https://${window.location.hostname}:${PORT}`);
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
