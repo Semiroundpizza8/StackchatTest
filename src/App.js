@@ -13,11 +13,8 @@ const App = () => {
   // Connect to the server
   useEffect(() => {
     const PORT = process.env.PORT || 3000;
-    const newSocket = io({
+    const newSocket = io(`https://${window.location.hostname}:${PORT}`, {
       rejectUnauthorized: false,
-    });
-    newSocket.on("connect_error", (err) => {
-      console.log(`connect_error due to ${err.message}`);
     });
     setSocket(newSocket);
     return () => newSocket.close();
@@ -29,7 +26,6 @@ const App = () => {
 
     // Whenever a message is sent to our socket, load it into the app
     socket.on("getMessage", (data) => {
-      console.log("Getting Message");
       setMessages((messages) => [...messages, data]);
     });
   }, [socket]);
