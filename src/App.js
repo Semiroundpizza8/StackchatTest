@@ -14,6 +14,9 @@ const App = () => {
   useEffect(() => {
     const PORT = process.env.PORT || 3000;
     const newSocket = io();
+    newSocket.on("connect_error", (err) => {
+      console.log(`connect_error due to ${err.message}`);
+    });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
